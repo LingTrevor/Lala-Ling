@@ -12,18 +12,18 @@
       <label for>Due at</label>
       <input type="date" />
     </div>
-    <div class="form-btn">
-      <button class="submit-btn">Save</button>
-    </div>
+    <FormBtn btnTitle="Save" />
   </TodoForm>
 </template>
 
 <script>
 import TodoForm from "@/components/layouts/TodoForm";
+import FormBtn from "@/components/FormBtn";
 export default {
   name: "AddForm",
   components: {
-    TodoForm
+    TodoForm,
+    FormBtn
   }
 };
 </script>
@@ -52,22 +52,6 @@ export default {
     padding: 5px;
     color: $color-primary-text;
     box-sizing: border-box;
-  }
-}
-.form-btn {
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-
-  .submit-btn {
-    width: 150px;
-    line-height: 20px;
-    font-size: 18px;
-    padding: 10px;
-    margin: 10px 10px 0 10px;
-    cursor: pointer;
-    color: $color-white-text;
-    background-color: $color-primary;
   }
 }
 </style>
