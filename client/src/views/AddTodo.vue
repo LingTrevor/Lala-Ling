@@ -21,7 +21,7 @@ import TodoForm from "@/components/layouts/TodoForm";
 import FormItems from "@/components/FormItems";
 import FormBtn from "@/components/FormBtn";
 export default {
-  name: "AddForm",
+  name: "AddTodo",
   components: {
     TodoForm,
     FormItems,

@@ -28,6 +28,17 @@ export default {
     cursor: pointer;
     color: $color-white-text;
     background-color: $color-primary;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover{
+      background-color: $color-primary-background;
+      color: $color-primary-text;
+      transform: scale(1.1);
+      border: 1px solid $color-primary;
+    }
   }
 }
 </style>
