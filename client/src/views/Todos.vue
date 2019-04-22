@@ -6,11 +6,20 @@
       <table>
         <tr>
           <th>
+            <i class="fas fa-arrow-up" @click="descActivity"></i>
             Todo
-            <i class="fas fa-arrow-down"></i>
+            <i class="fas fa-arrow-down" @click="asceActivity"></i>
           </th>
-          <th>Additional info <i class="fas fa-arrow-down"></i></th>
-          <th>Due at <i class="fas fa-arrow-down"></i></th>
+          <th>
+            <i class="fas fa-arrow-up" @click="descNote"></i>
+            Additional info
+            <i class="fas fa-arrow-down" @click="asceNote"></i>
+          </th>
+          <th>
+            <i class="fas fa-arrow-up" @click="descDate"></i>
+            Due at
+            <i class="fas fa-arrow-down" @click="asceDate"></i>
+          </th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
@@ -75,6 +84,40 @@ export default {
             this.message = "";
           }, 3500);
         });
+    },
+    dynamicSort(property) {
+      let sortOrder = 1;
+      //This one if you want to sort by desc
+      if (property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+      }
+
+      return function(a, b) {
+        if (sortOrder == -1) {
+          return b[property].localeCompare(a[property]);
+        } else {
+          return a[property].localeCompare(b[property]);
+        }
+      };
+    },
+    asceActivity() {
+      this.todos.sort(this.dynamicSort("activity"));
+    },
+    asceNote() {
+      this.todos.sort(this.dynamicSort("note"));
+    },
+    asceDate() {
+      this.todos.sort(this.dynamicSort("dueAt"));
+    },
+    descActivity() {
+      this.todos.sort(this.dynamicSort("-activity"));
+    },
+    descNote() {
+      this.todos.sort(this.dynamicSort("-note"));
+    },
+    descDate() {
+      this.todos.sort(this.dynamicSort("-dueAt"));
     }
   },
   created() {
@@ -113,6 +156,9 @@ table {
     padding: 8px;
     .fa-arrow-down {
       float: right;
+    }
+    .fa-arrow-up {
+      float: left;
     }
 
     i {
