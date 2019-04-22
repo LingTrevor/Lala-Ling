@@ -7,18 +7,20 @@
           <th>Todo</th>
           <th>Additional info</th>
           <th>Due at</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
         <tr v-for="todo in todos" :key="todo.id">
           <td>{{ todo.activity }}</td>
           <td>{{ todo.note }}</td>
           <td>{{ todo.dueAt }}</td>
           <td>
-            <span>Delete</span>
-            <span
-              @click="navigateTo({ name: 'EditTodo', params: { id: todo.id } })"
-              >Edit</span
-            >
+              <i
+                @click="navigateTo({ name: 'EditTodo', params: { id: todo.id } })"
+                class="fas fa-edit"
+              ></i>
           </td>
+          <td><i class="fas fa-trash"></i></td>
         </tr>
       </table>
     </Row>
@@ -80,11 +82,13 @@ table {
     text-align: center;
     padding: 8px;
 
-    span {
-      margin: 10px;
-      padding: 5px;
-      border-radius: 30px;
+    i {
       cursor: pointer;
+
+      &:hover{
+        transform: scale(1.4);
+        color: $color-primary;
+      }
     }
   }
 
