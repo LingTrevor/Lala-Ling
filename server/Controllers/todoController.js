@@ -43,5 +43,14 @@ module.exports = {
         const todo = response.data;
         res.status(200).send(todo);
     }).catch((err)=> console.log(err));
+    },
+    async deleteTodo(req,res){
+        const id = req.params.id;
+        await axios.delete(`https://uptime-todo-api.azurewebsites.net/api/todo/${id}`,{
+            headers: API_KEY
+        }).then(response=>{
+            console.log(response.data);
+            res.send({success: 'Todo Deleted!'});
+        }).catch((err)=>console.log(err));
     }
 }
