@@ -94,6 +94,7 @@ input {
 
   &:focus {
     outline: none;
+    box-shadow: 0px 2px 10px $color-primary-shadow;
   }
 }
 </style>
