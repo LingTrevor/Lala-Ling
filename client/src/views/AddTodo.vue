@@ -1,22 +1,25 @@
 <template>
   <TodoForm formTitle="Add Todo">
-    <FormItems>
-      <label for>Todo title</label>
-      <input type="text" />
-    </FormItems>
-    <FormItems>
-      <label for>Additional info</label>
-      <input type="text" />
-    </FormItems>
-    <FormItems>
-      <label for>Due at</label>
-      <input type="date" />
-    </FormItems>
-    <FormBtn btnTitle="Save" />
+    <form @submit.prevent="addTodo">
+      <FormItems>
+        <label for>Todo title</label>
+        <input type="text" v-model="todoTitle">
+      </FormItems>
+      <FormItems>
+        <label for>Additional info</label>
+        <input type="text" v-model="todoNote">
+      </FormItems>
+      <FormItems>
+        <label for>Due at</label>
+        <input type="date" v-model="dueAt">
+      </FormItems>
+      <FormBtn btnTitle="Save"/>
+    </form>
   </TodoForm>
 </template>
 
 <script>
+import axios from "axios";
 import TodoForm from "@/components/layouts/TodoForm";
 import FormItems from "@/components/FormItems";
 import FormBtn from "@/components/FormBtn";
@@ -26,6 +29,27 @@ export default {
     TodoForm,
     FormItems,
     FormBtn
+  },
+  data() {
+    return {
+      todoTitle: "",
+      todoNote: "",
+      dueAt: ""
+    };
+  },
+  methods: {
+    addTodo: async function() {
+      const todo = {
+        title: this.todoTitle,
+        note: this.todoNote,
+        dueAt: this.dueAt
+      };
+      console.log(todo);
+      const response = await axios.post(`http://localhost:5000/todo/add`, {
+        todo
+      });
+      console.log(this.todoTitle);
+    }
   }
 };
 </script>
@@ -47,5 +71,11 @@ input {
   padding: 5px;
   color: $color-primary-text;
   box-sizing: border-box;
+  border: 1px solid $color-primary-line;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0px 2px 10px $color-primary-shadow;
+  }
 }
 </style>
