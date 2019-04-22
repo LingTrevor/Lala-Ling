@@ -1,0 +1,36 @@
+{
+  "name": "lala-ling",
+  "version": "1.0.0",
+  "description": "Lala Website",
+  "main": "app.js",
+  "scripts": {
+    "start":"node app.js",
+    "dev": "nodemon node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LingTrevor/Lala-Ling.git"
+  },
+  "keywords": [
+    "Lala",
+    "Website",
+    "Todos"
+  ],
+  "author": "Trevor Ling",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LingTrevor/Lala-Ling/issues"
+  },
+  "homepage": "https://github.com/LingTrevor/Lala-Ling#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "uuid": "^3.3.2"
+  },
+  "engines": {
+    "node": ">= 10.15.0", 
+    "npm":">= 6.9.0"
+  }
+}
