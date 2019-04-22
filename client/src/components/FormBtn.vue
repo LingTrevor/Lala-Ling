@@ -33,7 +33,7 @@ export default {
       outline: none;
     }
 
-    &:hover{
+    &:hover {
       background-color: $color-primary-background;
       color: $color-primary-text;
       transform: scale(1.1);
