@@ -1,12 +1,10 @@
 <template>
   <Container>
     <Row>
-      <form>
         <h1>{{ formTitle }}</h1>
         <div class="form-group">
           <slot>No slot content</slot>
         </div>
-      </form>
     </Row>
   </Container>
 </template>
