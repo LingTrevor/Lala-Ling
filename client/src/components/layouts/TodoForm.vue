@@ -1,10 +1,10 @@
 <template>
   <Container>
     <Row>
-        <h1>{{ formTitle }}</h1>
-        <div class="form-group">
-          <slot>No slot content</slot>
-        </div>
+      <h1>{{ formTitle }}</h1>
+      <div class="form-group">
+        <slot>No slot content</slot>
+      </div>
     </Row>
   </Container>
 </template>
