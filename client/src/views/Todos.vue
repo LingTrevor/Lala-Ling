@@ -2,6 +2,7 @@
   <Container>
     <Row v-if="todos">
       <h1>Todos</h1>
+      <div class="message" v-if="message">{{ message }}</div>
       <table>
         <tr>
           <th>Todo</th>
@@ -15,12 +16,14 @@
           <td>{{ todo.note }}</td>
           <td>{{ todo.dueAt }}</td>
           <td>
-              <i
-                @click="navigateTo({ name: 'EditTodo', params: { id: todo.id } })"
-                class="fas fa-edit"
-              ></i>
+            <i
+              @click="navigateTo({ name: 'EditTodo', params: { id: todo.id } })"
+              class="fas fa-edit"
+            ></i>
           </td>
-          <td><i class="fas fa-trash"></i></td>
+          <td>
+            <i class="fas fa-trash" @click="deleteTodo(todo.id)"></i>
+          </td>
         </tr>
       </table>
     </Row>
@@ -43,17 +46,32 @@ export default {
   },
   data() {
     return {
-      todos: ""
+      todos: "",
+      message: ""
     };
   },
   methods: {
     getTodos: async function() {
-      const response = await axios.get(`http://localhost:5000`);
-      //   console.log(response.data);
-      this.todos = response.data;
+      await axios.get(`http://localhost:5000/api/todos`).then(response => {
+        this.todos = response.data;
+        //   console.log(response.data);
+      });
     },
     navigateTo(route) {
       this.$router.push(route);
+    },
+    deleteTodo: async function(id) {
+      this.todos = this.todos.filter(todo => todo.id !== id);
+      await axios
+        .delete(`http://localhost:5000/api/todo/${id}`)
+        .then(response => {
+          this.message = response.data.success;
+
+          //Sets message to empty after 3.5secs
+          setTimeout(() => {
+            this.message = "";
+          }, 3500);
+        });
     }
   },
   created() {
@@ -71,6 +89,15 @@ h1 {
   margin-bottom: 20px;
 }
 
+.message {
+  padding: 20px;
+  margin: 5px;
+  text-align: center;
+  font-weight: bolder;
+  color: $color-primary-text;
+  border: 1px solid $color-primary-line;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -85,7 +112,7 @@ table {
     i {
       cursor: pointer;
 
-      &:hover{
+      &:hover {
         transform: scale(1.4);
         color: $color-primary;
       }
