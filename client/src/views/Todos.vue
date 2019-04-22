@@ -5,13 +5,16 @@
       <div class="message" v-if="message">{{ message }}</div>
       <table>
         <tr>
-          <th>Todo</th>
-          <th>Additional info</th>
-          <th>Due at</th>
+          <th>
+            Todo
+            <i class="fas fa-arrow-down"></i>
+          </th>
+          <th>Additional info <i class="fas fa-arrow-down"></i></th>
+          <th>Due at <i class="fas fa-arrow-down"></i></th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
-        <tr v-for="todo in todos" :key="todo.id">
+        <tr v-for="(todo, index) in todos" :key="index">
           <td>{{ todo.activity }}</td>
           <td>{{ todo.note }}</td>
           <td>{{ todo.dueAt }}</td>
@@ -108,6 +111,9 @@ table {
     border: 1px solid $color-primary-line;
     text-align: center;
     padding: 8px;
+    .fa-arrow-down {
+      float: right;
+    }
 
     i {
       cursor: pointer;
