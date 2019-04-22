@@ -3,17 +3,17 @@
     <form @submit.prevent="addTodo">
       <FormItems>
         <label for>Todo title</label>
-        <input type="text" v-model="todoTitle">
+        <input type="text" v-model="todoTitle" />
       </FormItems>
       <FormItems>
         <label for>Additional info</label>
-        <input type="text" v-model="todoNote">
+        <input type="text" v-model="todoNote" />
       </FormItems>
       <FormItems>
         <label for>Due at</label>
-        <input type="date" v-model="dueAt">
+        <input type="date" v-model="dueAt" />
       </FormItems>
-      <FormBtn btnTitle="Save"/>
+      <FormBtn btnTitle="Save" />
     </form>
   </TodoForm>
 </template>
@@ -44,11 +44,15 @@ export default {
         note: this.todoNote,
         dueAt: this.dueAt
       };
-      console.log(todo);
-      const response = await axios.post(`http://localhost:5000/todo/add`, {
-        todo
-      });
-      console.log(this.todoTitle);
+      await axios
+        .post(`http://localhost:5000/api/todo/add`, {
+          todo
+        })
+        .then(response => {
+          if (response.status === 200) {
+            this.$router.push({ path: "/" });
+          }
+        });
     }
   }
 };
