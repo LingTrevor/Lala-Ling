@@ -1,19 +1,19 @@
 <template>
   <TodoForm formTitle="Edit Todo">
-    <form>
+    <form @submit.prevent="editTodo">
       <FormItems>
         <label for>Todo title</label>
-        <input type="text" v-model="todoTitle">
+        <input type="text" v-model="todoTitle" />
       </FormItems>
       <FormItems>
         <label for>Additional info</label>
-        <input type="text" v-model="todoNote">
+        <input type="text" v-model="todoNote" />
       </FormItems>
       <FormItems>
         <label for>Due at</label>
-        <input type="date">
+        <input type="date" />
       </FormItems>
-      <FormBtn btnTitle="Save"/>
+      <FormBtn btnTitle="Save" />
     </form>
   </TodoForm>
 </template>
@@ -35,15 +35,36 @@ export default {
       todoId: "",
       todo: "",
       todoTitle: "",
-      todoNote: ""
+      todoNote: "",
+      todoDue: ""
     };
   },
   methods: {
     getTodo: async function(id) {
-      const response = await axios.get(`http://localhost:5000/todo/edit/${id}`);
-      this.todo = response.data;
-      this.todoTitle = this.todo.activity;
-      this.todoNote = this.todo.note;
+      await axios.get(`http://localhost:5000/api/todo/${id}`).then(response => {
+        this.todo = response.data;
+        this.todoTitle = this.todo.activity;
+        this.todoNote = this.todo.note;
+        this.todoDue = this.todo.dueAt;
+      });
+    },
+    editTodo: async function() {
+      const updatedTodo = {
+        id: this.todo.id,
+        title: this.todoTitle,
+        note: this.todoNote,
+        dueAt: this.todoDue,
+        createdAt: this.todo.createdAt
+      };
+      await axios
+        .put(`http://localhost:5000/api/todo`, {
+          updatedTodo
+        })
+        .then(response => {
+          if (response.status === 200) {
+            this.$router.push({ path: "/" });
+          }
+        });
     }
   },
   created() {
