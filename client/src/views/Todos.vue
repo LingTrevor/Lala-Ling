@@ -67,6 +67,12 @@ export default {
       await axios.get(`http://localhost:5000/api/todos`).then(response => {
         this.todos = response.data;
         //   console.log(response.data);
+        for (let todo in this.todos) {
+          // console.log(this.todos[todo].dueAt);
+          let splitDate = this.todos[todo].dueAt.split("T")[0];
+          this.todos[todo].dueAt = splitDate;
+          //  console.log(splitDate);
+        }
       });
     },
     navigateTo(route) {
@@ -154,6 +160,7 @@ table {
     border: 1px solid $color-primary-line;
     text-align: center;
     padding: 8px;
+
     .fa-arrow-down {
       float: right;
     }
