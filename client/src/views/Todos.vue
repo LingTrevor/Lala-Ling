@@ -158,6 +158,7 @@ table {
     border: $border-primary;
     text-align: center;
     padding: 8px;
+    min-width: 90px;
 
     .fa-arrow-down {
       float: right;
