@@ -44,15 +44,18 @@ module.exports = {
             // console.log(response.data);
             const todo = response.data;
             res.status(200).send(todo);
-        }).catch((err) => console.log(err));
+        }).catch((err) => {
+            console.log(err)
+            res.status(400).send('One or more validation errors occurred. Please fill the empty fields!');
+        });
     },
     async deleteTodo(req, res) {
         const id = req.params.id;
         await axios.delete(`${API_LINK}/${id}`, {
             headers: API_KEY
         }).then(response => {
-            console.log(response.data);
-            res.send({ success: 'Todo Deleted!' });
+            // console.log(response.data);
+            res.status(200).send({ success: 'Todo Deleted!' });
         }).catch((err) => console.log(err));
     },
     async updateTodo(req, res) {
@@ -77,6 +80,9 @@ module.exports = {
             const todo = response.data;
             // console.log(response.data);
             res.status(200).send(todo);
-        }).catch((err) => console.log(err));
+        }).catch((err) => {
+            console.log(err)
+            res.status(400).send('One or more validation errors occurred. Please fill the empty fields!');
+        });
     }
 }

@@ -1,5 +1,6 @@
 <template>
   <TodoForm formTitle="Add Todo">
+    <ErrMessage v-if="message">{{ message }}</ErrMessage>
     <form @submit.prevent="addTodo">
       <FormItems>
         <label for>Todo title</label>
@@ -21,12 +22,14 @@
 <script>
 import axios from "axios";
 import TodoForm from "@/components/layouts/TodoForm";
+import ErrMessage from "@/components/layouts/ErrMessage";
 import FormItems from "@/components/FormItems";
 import FormBtn from "@/components/FormBtn";
 export default {
   name: "AddTodo",
   components: {
     TodoForm,
+    ErrMessage,
     FormItems,
     FormBtn
   },
@@ -34,7 +37,8 @@ export default {
     return {
       todoTitle: "",
       todoNote: "",
-      dueAt: ""
+      dueAt: "",
+      message: ""
     };
   },
   methods: {
@@ -51,6 +55,11 @@ export default {
         .then(response => {
           if (response.status === 200) {
             this.$router.push({ path: "/" });
+          }
+        })
+        .catch(err => {
+          if (err.response.status === 400) {
+            this.message = err.response.data;
           }
         });
     }
