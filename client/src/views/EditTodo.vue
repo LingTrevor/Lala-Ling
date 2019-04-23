@@ -11,7 +11,7 @@
       </FormItems>
       <FormItems>
         <label for>Due at</label>
-        <input type="date" />
+        <input type="date" v-model="todoDue" />
       </FormItems>
       <FormBtn btnTitle="Save" />
     </form>
@@ -45,7 +45,7 @@ export default {
         this.todo = response.data;
         this.todoTitle = this.todo.activity;
         this.todoNote = this.todo.note;
-        this.todoDue = this.todo.dueAt;
+        this.todoDue = this.todo.dueAt.split("T")[0];
       });
     },
     editTodo: async function() {

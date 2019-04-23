@@ -15,7 +15,7 @@ export default {};
 @import "../scss/_variables.scss";
 header {
   border-bottom: $border-primary;
-    background-color: $color-primary;
+  background-color: $color-primary;
 
   .nav {
     display: flex;
@@ -33,7 +33,7 @@ header {
       text-decoration: none;
 
       &.router-link-exact-active {
-      color: $color-active-link;
+        color: $color-active-link;
       }
     }
   }
