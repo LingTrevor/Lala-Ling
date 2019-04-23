@@ -26,7 +26,7 @@ export default {
     padding: 10px;
     margin: 10px 10px 0 10px;
     cursor: pointer;
-    color: $color-white-text;
+    color: $color-light-text;
     background-color: $color-primary;
 
     &:focus {
@@ -34,10 +34,10 @@ export default {
     }
 
     &:hover {
-      background-color: $color-primary-background;
+      background-color: $color-row-light;
       color: $color-primary-text;
       transform: scale(1.1);
-      border: 1px solid $color-primary;
+      border: $border-primary;
     }
   }
 }

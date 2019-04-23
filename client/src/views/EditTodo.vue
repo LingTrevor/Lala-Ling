@@ -90,11 +90,11 @@ input {
   padding: 5px;
   color: $color-primary-text;
   box-sizing: border-box;
-  border: 1px solid $color-primary-line;
+  border: $border-primary;
 
   &:focus {
     outline: none;
-    box-shadow: 0px 2px 10px $color-primary-shadow;
+    box-shadow: $shadow-input;
   }
 }
 </style>

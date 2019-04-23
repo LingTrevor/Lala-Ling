@@ -14,7 +14,7 @@ export default {};
 <style lang="scss" scoped>
 @import "../scss/_variables.scss";
 header {
-  border-bottom: 1px solid $color-primary-shadow;
+  border-bottom: $border-primary;
 
   .nav {
     display: flex;

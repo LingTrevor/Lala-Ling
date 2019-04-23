@@ -1,9 +1,10 @@
-$color-primary-text: #142026;
 $color-primary: #314e5e;
+$color-light-text: #ffffff;
+$color-primary-text: #142026;
+$color-line-blue: #5486a2;
+$color-row-light: #f8fafb;
 $color-table-bg: #d7e3ea;
-$color-primary-shadow: #5486a2;
-$color-primary-line: #5486a2;
-$color-primary-background: #f8fafb;
-$color-linear-first: #cfd9df;
-$color-linear-second: #e2ebf0;
-$color-white-text: #ffffff;
+
+$shadow-primary: 1px 5px 10px ($color-line-blue);
+$shadow-input: 0px 2px 10px ($color-line-blue);
+$border-primary: 1px solid ($color-line-blue);

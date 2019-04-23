@@ -14,8 +14,8 @@ export default {};
   width: 60%;
   margin: 20px;
   padding: 20px;
-  background-color: $color-primary-background;
-  box-shadow: 1px 5px 10px $color-primary-shadow;
+  background-color: $color-row-light;
+  box-shadow: $shadow-primary;
   overflow: scroll;
 }
 </style>

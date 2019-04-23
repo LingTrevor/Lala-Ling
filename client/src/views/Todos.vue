@@ -147,7 +147,7 @@ h1 {
   text-align: center;
   font-weight: bolder;
   color: $color-primary-text;
-  border: 1px solid $color-primary-line;
+  border: $border-primary;
 }
 
 table {
@@ -157,7 +157,7 @@ table {
 
   td,
   th {
-    border: 1px solid $color-primary-line;
+    border: $border-primary;
     text-align: center;
     padding: 8px;
 
@@ -180,7 +180,7 @@ table {
 
   tr:nth-child(even) {
     background-color: $color-table-bg;
-    border: 1px solid $color-primary-line;
+    border: $border-primary;
   }
 }
 </style>
