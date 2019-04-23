@@ -45,7 +45,7 @@ export default {
         dueAt: this.dueAt
       };
       await axios
-        .post(`http://localhost:5000/api/todo/add`, {
+        .post(`/api/todo/add`, {
           todo
         })
         .then(response => {

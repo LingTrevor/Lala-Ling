@@ -28,6 +28,12 @@ export default new Router({
       name: "EditTodo",
       component: () =>
         import(/* webpackChunkName: "editTodo" */ "./views/EditTodo.vue")
+    },
+    {
+      path: "*",
+      name: "NotFound",
+      component: () =>
+        import(/* webpackChunkName: "notFound" */ "./views/NotFound.vue")
     }
   ]
 });

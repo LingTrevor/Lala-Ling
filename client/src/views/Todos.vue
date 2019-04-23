@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     getTodos: async function() {
-      await axios.get(`http://localhost:5000/api/todos`).then(response => {
+      await axios.get(`/api/todos`).then(response => {
         this.todos = response.data;
         //   console.log(response.data);
         for (let todo in this.todos) {
@@ -80,16 +80,14 @@ export default {
     },
     deleteTodo: async function(id) {
       this.todos = this.todos.filter(todo => todo.id !== id);
-      await axios
-        .delete(`http://localhost:5000/api/todo/${id}`)
-        .then(response => {
-          this.message = response.data.success;
+      await axios.delete(`/api/todo/${id}`).then(response => {
+        this.message = response.data.success;
 
-          //Sets message to empty after 3.5secs
-          setTimeout(() => {
-            this.message = "";
-          }, 3500);
-        });
+        //Sets message to empty after 3.5secs
+        setTimeout(() => {
+          this.message = "";
+        }, 3500);
+      });
     },
     dynamicSort(property) {
       let sortOrder = 1;

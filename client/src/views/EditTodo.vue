@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     getTodo: async function(id) {
-      await axios.get(`http://localhost:5000/api/todo/${id}`).then(response => {
+      await axios.get(`/api/todo/${id}`).then(response => {
         this.todo = response.data;
         this.todoTitle = this.todo.activity;
         this.todoNote = this.todo.note;
@@ -57,7 +57,7 @@ export default {
         createdAt: this.todo.createdAt
       };
       await axios
-        .put(`http://localhost:5000/api/todo`, {
+        .put(`/api/todo`, {
           updatedTodo
         })
         .then(response => {
