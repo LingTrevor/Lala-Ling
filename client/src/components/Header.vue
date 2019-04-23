@@ -15,6 +15,7 @@ export default {};
 @import "../scss/_variables.scss";
 header {
   border-bottom: $border-primary;
+    background-color: $color-primary;
 
   .nav {
     display: flex;
@@ -28,8 +29,12 @@ header {
       padding: 5px;
       font-weight: bold;
       cursor: pointer;
-      color: $color-primary-text;
+      color: $color-light-text;
       text-decoration: none;
+
+      &.router-link-exact-active {
+      color: $color-active-link;
+      }
     }
   }
 }
